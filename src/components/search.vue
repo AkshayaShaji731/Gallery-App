@@ -6,37 +6,36 @@
       </form>
     </div>
   </section>
-</template>
-    
-    <script>
-import { reactive } from 'vue';
-
+</template> 
+<script>
 export default {
   data() {
     return {
-      post:''
+      post: "",
     };
   },
-  methods:{
-    search(){
-     let searchInput=''
-     if(search !=''){
-      console.log(searchInput)
-     }
-    }
-  }
+  method: {
+    search() {
+      let searchInput = "";
+      if (searchInput === "") {
+        console.log("empty");
+      }
+    },
+  },
 };
 </script>
     <style>
 body {
   background-color: #111827;
 }
+
 .search input {
   padding: 15px;
   background-color: #ff731f;
   border: none;
   border-radius: 4px;
 }
+
 .search input::placeholder {
   color: #fff;
   font-weight: 500;

@@ -1,15 +1,14 @@
 <template>
   <search />
-  <cards />
+
 </template>
-
 <script setup>
-import search from "./components/searchBtn.vue";
-import cards from '@/components/cardSection.vue'
-</script>
 
+import search from '@/components/search.vue';
+</script>
 <style>
 body{
-      background-color:#111827 ;
-    }
+  background-color: #111827;
+  box-sizing: border-box;
+}
 </style>
