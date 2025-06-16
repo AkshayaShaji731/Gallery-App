@@ -1,6 +1,8 @@
 <template>
+<section class="gallary-container">
   <search />
   <card />
+</section>
 </template>
 <script setup>
 import search from "@/components/search.vue";

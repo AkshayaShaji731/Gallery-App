@@ -1,36 +1,39 @@
 <template>
   <section class="main-container">
-    <section v-for="post in postPhotos" :key="post.id" class="card">
+    <section v-for="post in state.posts" :key="post.id" class="gallery-card">
       <div class="img-container">
         <img
-          :src="Image"
+          :src="state.Image"
           alt="img"
         />
       </div>
-      <div class="details-container">
-        <span class="heading">{{ post.title }}</span>
-        <span class="para">{{ post.id }}</span>
+      <div class="img-details-container">
+        <span class="img-title">{{ post.title }}</span>
+        <span class="img-id">{{ post.id }}</span>
       </div>
     </section>
   </section>
 </template>
-<script>
-import axios from "axios";
 
-export default {
-  data() {
-    return {
-      postPhotos: [],
-      Image:"https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8"
-    };
-  },
-  mounted() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then((response) => (this.postPhotos = response.data));
-  },
-};
+<script setup>
+import axios from "axios";
+import {ref,onMounted, reactive} from 'vue'
+
+const state=reactive({
+  posts:ref([]),
+  Image:"https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8"
+})
+
+onMounted(async()=>{
+  try{
+    const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+    state.posts=response.data;
+  }catch(error){
+    console.error('Error fetching jobs',error)
+  }
+})
 </script>
+
 <style>
 .main-container {
   display: grid;
@@ -40,7 +43,7 @@ export default {
   margin-top: 30px;
 }
 
-.card {
+.gallery-card {
   display: flex;
   flex-direction: column;
   border: 2px solid #1F2937;
@@ -59,22 +62,21 @@ export default {
   object-fit: cover;
 }
 
-.details-container {
+.img-details-container {
   display: flex;
   flex-direction: column;
   padding: 12px;
   text-align: center;
 }
 
-.heading {
+.img-title {
   font-weight: 500;
   color: #E5E7EB;
-  font-size: 14px;
   line-height: 20px;
   text-transform: capitalize;
 }
 
-.para {
+.img-id {
   color: #9CA3AF;
   font-size: 12px;
   line-height: 16px;
