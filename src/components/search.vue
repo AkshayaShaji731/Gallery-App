@@ -1,25 +1,20 @@
 <template>
     <input type="text" placeholder="Search" v-model="searchInput" @keyup.enter="onSearch" />
 </template> 
-<script>
-export default {
-  data() {
-    return {
-      searchInput: "",
-    };
-  },
-  methods: {
-    onSearch() {
-      if (this.searchInput == "") {
-        console.log("empty");
-      } else {
-        console.log(this.searchInput);
-      }
-    },
-  },
-};
+<script setup>
+import { ref } from 'vue';
+
+const searchInput = ref('');
+
+function onSearch() {
+  if (searchInput.value === '') {
+    console.log('empty');
+  } else {
+    console.log(searchInput.value);
+  }
+}
 </script>
-<style>
+<style scoped>
 body {
   background-color: #111827;
 }
