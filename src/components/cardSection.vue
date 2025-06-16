@@ -43,13 +43,13 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(31 41 55);
+  border: 2px solid #1F2937;
   border-radius: 4px;
 }
 
 .img-container {
   padding-top: 8px;
-  border-bottom: 2px solid rgb(31 41 55);
+  border-bottom: 2px solid #1F2937;
   max-width: 400px;
 }
 
@@ -68,14 +68,14 @@ export default {
 
 .heading {
   font-weight: 500;
-  color: rgba(229 231 235);
+  color: #E5E7EB;
   font-size: 14px;
   line-height: 20px;
   text-transform: capitalize;
 }
 
 .para {
-  color: rgb(156, 163, 175);
+  color: #9CA3AF;
   font-size: 12px;
   line-height: 16px;
 }
