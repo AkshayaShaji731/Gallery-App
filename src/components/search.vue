@@ -1,28 +1,25 @@
 <template>
-  <form @submit.prevent="search">
-    <input type="text" placeholder="Search" v-model="searchInput"/>
-  </form>
+    <input type="text" placeholder="Search" v-model="searchInput" @keyup.enter="onSearch" />
 </template> 
 <script>
 export default {
   data() {
     return {
-      searchInput:""
+      searchInput: "",
     };
   },
   methods: {
-    search() {
-      if (this.searchInput== "") {
+    onSearch() {
+      if (this.searchInput == "") {
         console.log("empty");
-      }
-      else{
-        console.log(this.searchInput)
+      } else {
+        console.log(this.searchInput);
       }
     },
   },
 };
 </script>
-    <style>
+<style>
 body {
   background-color: #111827;
 }
