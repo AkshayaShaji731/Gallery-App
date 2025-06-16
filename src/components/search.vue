@@ -1,24 +1,22 @@
 <template>
-  <section class="main">
-    <div class="search">
-      <form @submit.prevent="search">
-        <input type="text" placeholder="Search" v-model="searchInput" />
-      </form>
-    </div>
-  </section>
+  <form @submit.prevent="search">
+    <input type="text" placeholder="Search" v-model="searchInput"/>
+  </form>
 </template> 
 <script>
 export default {
   data() {
     return {
-      post: "",
+      searchInput:""
     };
   },
-  method: {
+  methods: {
     search() {
-      let searchInput = "";
-      if (searchInput === "") {
+      if (this.searchInput== "") {
         console.log("empty");
+      }
+      else{
+        console.log(this.searchInput)
       }
     },
   },
@@ -29,14 +27,14 @@ body {
   background-color: #111827;
 }
 
-.search input {
+input {
   padding: 15px;
   background-color: #ff731f;
   border: none;
   border-radius: 4px;
 }
 
-.search input::placeholder {
+input::placeholder {
   color: #fff;
   font-weight: 500;
   font-size: 16px;

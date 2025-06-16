@@ -1,13 +1,11 @@
 <template>
   <search />
-
 </template>
 <script setup>
-
-import search from '@/components/search.vue';
+import search from "@/components/search.vue";
 </script>
 <style>
-body{
+body {
   background-color: #111827;
   box-sizing: border-box;
 }
