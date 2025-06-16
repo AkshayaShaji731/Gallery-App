@@ -1,15 +1,15 @@
-import { createRouter,createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import serachInput from '@/components/search.vue'
 
-const router=createRouter({
-    history:createWebHistory(import.meta.env.BASE_UR),
-    routes:[
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_UR),
+    routes: [
         {
-            path:'/',
+            path: '/',
             path: '/',
             name: 'search',
-            component:serachInput
+            component: serachInput
         }
     ]
 })
