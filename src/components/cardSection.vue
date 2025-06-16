@@ -3,11 +3,11 @@
     <section v-for="post in postPhotos" :key="post.id" class="card">
       <div class="img-container">
         <img
-          src="https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8"
+          :src="Image"
           alt="img"
         />
       </div>
-      <div class="text-container">
+      <div class="details-container">
         <span class="heading">{{ post.title }}</span>
         <span class="para">{{ post.id }}</span>
       </div>
@@ -16,10 +16,12 @@
 </template>
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
       postPhotos: [],
+      Image:"https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8"
     };
   },
   mounted() {
@@ -57,7 +59,7 @@ export default {
   object-fit: cover;
 }
 
-.text-container {
+.details-container {
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -83,6 +85,7 @@ export default {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media screen and (min-width: 1024px) {
   .main-container {
     grid-template-columns: repeat(4, 1fr);
