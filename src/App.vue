@@ -1,13 +1,9 @@
 <template>
-  <section class="gallary-container">
-    <search />
-    <card />
-  </section>
+ <RouterView />
 </template>
 
 <script setup>
-import search from "@/components/search.vue";
-import card from "@/components/cardSection.vue";
+import { RouterView } from 'vue-router';
 </script>
 
 <style>
