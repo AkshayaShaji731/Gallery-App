@@ -1,13 +1,15 @@
 <template>
-<section class="gallary-container">
-  <search />
-  <card />
-</section>
+  <section class="gallary-container">
+    <search />
+    <card />
+  </section>
 </template>
+
 <script setup>
 import search from "@/components/search.vue";
 import card from "@/components/cardSection.vue";
 </script>
+
 <style>
 body {
   background-color: #111827;
