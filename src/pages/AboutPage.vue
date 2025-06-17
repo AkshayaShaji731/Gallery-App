@@ -6,6 +6,7 @@
     photographs, graphics and individual video frames. For this purpose, an
     image is a picture that was created or copied and stored in electronic form.
     <br />
+
     The details held by a particular image are known as image resolution. The
     higher the resolution, the more visible the details are in an image. Image
     resolution quantifies how close lines can get to each other while remaining
@@ -16,6 +17,13 @@
 
 <script></script>
 
-<style>
-
+<style scoped>
+.about-title{
+  color: #fff;
+  font-size: 30px;
+}
+.about-content{
+  color: #fff;
+  font-size: 16px;
+}
 </style>
