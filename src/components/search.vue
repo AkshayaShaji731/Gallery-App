@@ -6,7 +6,7 @@
     @keyup.enter="onSearch"
   />
   <section class="card-container">
-    <CardSection v-for="post in posts" :key="post.id" :post-data="post" />
+    <CardSection v-for="post in postValues" :key="post.id" :post-data="post" />
   </section>
 </template> 
 
@@ -18,9 +18,11 @@ import CardSection from "./cardSection.vue";
 const searchInput = ref("");
 
 let posts = ref([]);
+let postValues = posts;
 
 function onSearch() {
   if (searchInput.value === "") {
+    postValues = posts;
     console.log("empty");
   } else {
     posts = [posts.value[searchInput.value - 1]];
