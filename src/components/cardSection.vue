@@ -1,6 +1,5 @@
 <template>
-  <section class="card-container">
-    <section v-for="post in posts" :key="post.id" class="gallery-card">
+    <section class="gallery-card">
       <div class="img-container">
         <img :src="Image" alt="img" />
       </div>
@@ -9,38 +8,19 @@
         <span class="img-id">{{ post.id }}</span>
       </div>
     </section>
-  </section>
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted } from "vue";
-
-const posts = ref([]);
 const Image =
   "https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8";
 
-onMounted(async () => {
-  try {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/photos"
-    );
-    posts.value = response.data;
-  } catch (error) {
-    console.error("Error fetching jobs", error);
-  }
-});
+const props=defineProps({
+  postData:Object
+})
+
 </script>
 
 <style>
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-inline: 16px;
-  gap: 16px;
-  margin-top: 30px;
-}
-
 .gallery-card {
   display: flex;
   flex-direction: column;
@@ -78,17 +58,5 @@ onMounted(async () => {
   color: #9ca3af;
   font-size: 12px;
   line-height: 16px;
-}
-
-@media screen and (min-width: 768px) {
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .card-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 </style>

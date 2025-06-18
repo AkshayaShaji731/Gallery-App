@@ -25,7 +25,7 @@ function onSearch() {
     postValues = posts;
     console.log("empty");
   } else {
-    posts = [posts.value[searchInput.value - 1]];
+    postValues = [posts.value[searchInput.value - 1]];
     console.log(posts);
     searchInput.value = "";
   }
