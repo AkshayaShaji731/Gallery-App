@@ -10,23 +10,25 @@
       photography. You can find various photographers in the masters section, as
       well as interesting stories or facts about pictures you may not know.
     </p>
-
   </section>
 </template>
 
-<script >
-</script>
+<script ></script>
+
 <style scoped>
 h2,
 p {
   color: white;
-  padding:5px;
+  padding: 5px;
 }
-.home-headng{
-  position:relative;
-  font-size:30px;
+
+.home-headng {
+  position: relative;
+  font-size: 30px;
 }
-.home-content{
-  font-size:16px
+
+.home-content {
+  font-size: 16px;
 }
+
 </style>
