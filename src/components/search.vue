@@ -1,15 +1,9 @@
 <template>
-  <input
-    type="text"
-    placeholder="Search"
-    v-model="searchInput"
-    @keyup.enter="onSearch"
-  />
+  <input type="text" placeholder="Search" v-model="searchInput" @keyup.enter="onSearch"/>
   <section class="card-container">
-    <CardSection v-for="post in postValues" :key="post.id" :post-data="post" />
+    <CardSection v-for="post in posts" :key="post.id" :post-data="post" />
   </section>
 </template> 
-
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
@@ -18,16 +12,14 @@ import CardSection from "./cardSection.vue";
 const searchInput = ref("");
 
 let posts = ref([]);
-let postValues = posts;
 
 function onSearch() {
   if (searchInput.value === "") {
-    postValues = posts;
     console.log("empty");
   } else {
-    postValues = [posts.value[searchInput.value - 1]];
-    console.log(posts);
-    searchInput.value = "";
+    posts=[posts.value[searchInput.value-1]]
+    console.log(posts)
+    searchInput.value=''
   }
 }
 
