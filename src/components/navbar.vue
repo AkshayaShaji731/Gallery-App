@@ -11,7 +11,7 @@
 <script></script>
 
 <style scoped> 
-.gallary-nav{
+.gallery-nav{
     background-color: #ff731f;
     position:fixed;
     top:0;
@@ -19,7 +19,7 @@
     width:100%;
     padding:30px;
 }
-.gallary-nav ul{
+.gallery-nav ul{
     list-style-type:none;
     color:#fff;
     display:flex;
