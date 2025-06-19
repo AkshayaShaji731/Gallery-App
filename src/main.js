@@ -9,8 +9,6 @@ import * as directives from 'vuetify/directives'
 import router from '@/router/index.js'
 import App from '@/App.vue'
 
-
-
 const vuetify = createVuetify({
     components,
     directives,
