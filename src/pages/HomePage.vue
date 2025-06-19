@@ -1,6 +1,6 @@
 <template>
   <section class="home-container">
-    <h2 class="home-headng">Gallery App</h2>
+    <h2 class="home-heading">Gallery App</h2>
     <p class="home-content">
       Welcome to the About Photography Blog, where I share my thoughts and
       essays about photography. Whether you're a beginner or a seasoned veteran,
@@ -16,13 +16,13 @@
 <script ></script>
 
 <style scoped>
-h2,
-p {
+.home-heading,
+.home-content {
   color: white;
   padding: 5px;
 }
 
-.home-headng {
+.home-heading {
   position: relative;
   font-size: 30px;
 }
@@ -30,5 +30,4 @@ p {
 .home-content {
   font-size: 16px;
 }
-
 </style>
