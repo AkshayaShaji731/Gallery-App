@@ -12,15 +12,17 @@ import search from "@/components/search.vue";
 import cardSection from "@/components/cardSection.vue";
 
 const posts = ref([]);
-let postValues = ref(posts);
+const postValues = ref(posts);
 
 function onSearch (searchInput) {
-    postValues = ref(posts);
+  console.log("vakue")
+    postValues.value= posts.value;
   if (searchInput === "") {
     console.log("empty");
   } else {
+    console.log(searchInput)
     postValues.value = [posts.value[searchInput - 1]];
-    console.log(postValues);
+    // console.log(postValues);
     searchInput = "";
   }
 };
@@ -30,7 +32,7 @@ onMounted(async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/photos"
     );
-    posts.value = response.data;
+    posts.value = response.data.filter(item=>item.id<=40);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }

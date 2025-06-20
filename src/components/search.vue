@@ -12,18 +12,11 @@ import { ref } from "vue";
 
 const searchInput = ref("");
 
-const emit=defineEmits(['searchFunction'])
+const emit=defineEmits(['search-function'])
 
 const onSearch =() =>{
-  emit('searchFunction',searchInput.value)
+  emit('search-function',searchInput.value)
 }
-
-// const props = defineProps({
-//   searchFunction: {
-//     type: Function,
-//     required: true,
-//   },
-// });
 </script>
 
 <style scoped>
