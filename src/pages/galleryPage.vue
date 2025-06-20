@@ -1,28 +1,34 @@
 <template>
-   <search v-model="searchInput"/>
-  <section class="card-container">
-    <cardSection v-for="post in postValues" :key="post.id" :post-data="post" />
+  <section class="gallery-container">
+    <search v-model="searchInput" class="pa-8" />
+    <section class="card-container">
+      <cardSection
+        v-for="post in postValues"
+        :key="post.id"
+        :post-data="post"
+      />
+    </section>
   </section>
 </template>
 
 <script setup>
 import axios from "axios";
-import { ref, onMounted,computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import search from "@/components/search.vue";
 import cardSection from "@/components/cardSection.vue";
 
 const posts = ref([]);
-const searchInput=ref('')
+const searchInput = ref("");
 
-const postValues=computed(()=>{
-    if(!searchInput.value){
-      return posts.value
-    }
-    const filter=searchInput.value.toLowerCase();
-    return posts.value.filter(item=>
-        item.title.toLowerCase().includes(filter)
-    )
-})
+const postValues = computed(() => {
+  if (!searchInput.value) {
+    return posts.value;
+  }
+  const filter = searchInput.value.toLowerCase();
+  return posts.value.filter((item) =>
+    item.title.toLowerCase().includes(filter)
+  );
+});
 
 onMounted(async () => {
   try {
@@ -37,6 +43,9 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.gallery-container{
+  padding: 0 32px;
+}
 .card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
