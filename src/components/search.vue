@@ -19,6 +19,7 @@ function onSearch() {
   }
 }
 </script>
+
 <style scoped>
 body {
   background-color: #111827;
