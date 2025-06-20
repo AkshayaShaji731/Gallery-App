@@ -1,15 +1,50 @@
 <template>
   <nav class="gallery-nav">
     <ul>
-      <li><RouterLink to="/">Home</RouterLink></li>
-      <li><RouterLink to="/gallery">Gallery</RouterLink></li>
-      <li><RouterLink to="/about">About</RouterLink></li>
+      <li>
+        <RouterLink
+          to="/"
+          :class="[
+            isActiveLink('/')
+              ? 'bg-orange-accent-3 pa-4 text-white'
+              : 'hover:orange-accent-3 pa-4',
+          ]"
+          >Home</RouterLink
+        >
+      </li>
+      <li>
+        <RouterLink
+          to="/gallery"
+          :class="[
+            isActiveLink('/gallery')
+              ? 'bg-orange-accent-3 pa-4 text-white'
+              : 'hover:orange-accent-3 pa-2',
+          ]"
+          >Gallery</RouterLink
+        >
+      </li>
+      <li>
+        <RouterLink
+          to="/about"
+          :class="[
+            isActiveLink('/about')
+              ? 'bg-orange-accent-3 pa-4 text-white'
+              : 'hover:orange-accent-3 pa-2',
+          ]"
+          >About</RouterLink
+        >
+      </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+
+const isActiveLink = (routePath) => {
+  const route = useRoute();
+  return route.path === routePath;
+};
 </script>
 
 <style scoped>
