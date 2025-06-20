@@ -18,9 +18,9 @@ const router = createRouter({
             component: aboutPage
         },
         {
-            path:'/gallery',
-            name:'gallery',
-            component:galleryPage
+            path: '/gallery',
+            name: 'gallery',
+            component: galleryPage
         }
     ]
 })

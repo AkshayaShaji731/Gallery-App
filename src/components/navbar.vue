@@ -1,15 +1,15 @@
 <template>
   <nav class="gallery-nav">
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/gallery">Gallery</a></li>
+      <li><RouterLink to="/">Home</RouterLink></li>
+      <li><RouterLink to="/gallery">Gallery</RouterLink></li>
+      <li><RouterLink to="/about">About</RouterLink></li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
 </script>
 
 <style scoped>
