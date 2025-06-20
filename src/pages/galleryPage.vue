@@ -46,6 +46,7 @@ onMounted(async () => {
 .gallery-container {
   padding: 0 32px;
 }
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
