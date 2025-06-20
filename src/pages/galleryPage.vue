@@ -1,6 +1,6 @@
 <template>
   <section class="pl-8 pr-8">
-    <search v-model="searchInput"  />
+    <search v-model="searchInput" />
     <section class="card-container">
       <cardSection
         v-for="post in postValues"
