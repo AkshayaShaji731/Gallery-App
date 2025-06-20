@@ -1,5 +1,5 @@
 <template>
-  <section class="gallery-container">
+  <section class="pl-8 pr-8">
     <search v-model="searchInput"  />
     <section class="card-container">
       <cardSection
@@ -43,10 +43,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.gallery-container {
-  padding: 0 32px;
-}
-
 .card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
