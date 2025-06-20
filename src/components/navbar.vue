@@ -8,7 +8,9 @@
   </nav>
 </template>
 
-<script></script>
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
 
 <style scoped>
 .gallery-nav {
