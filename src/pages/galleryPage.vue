@@ -1,5 +1,5 @@
 <template>
-  <search @search-function="onSearch" />
+   <search v-model="searchInput"/>
   <section class="card-container">
     <cardSection v-for="post in postValues" :key="post.id" :post-data="post" />
   </section>
@@ -7,25 +7,22 @@
 
 <script setup>
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref, onMounted,computed } from "vue";
 import search from "@/components/search.vue";
 import cardSection from "@/components/cardSection.vue";
 
 const posts = ref([]);
-const postValues = ref(posts);
+const searchInput=ref('')
 
-function onSearch(searchInput) {
-  console.log("vakue");
-  postValues.value = posts.value;
-  if (searchInput === "") {
-    console.log("empty");
-  } else {
-    console.log(searchInput);
-    postValues.value = [posts.value[searchInput - 1]];
-    // console.log(postValues);
-    searchInput = "";
-  }
-}
+const postValues=computed(()=>{
+    if(!searchInput.value){
+      return posts.value
+    }
+    const filter=searchInput.value.toLowerCase();
+    return posts.value.filter(item=>
+        item.title.toLowerCase().includes(filter)
+    )
+})
 
 onMounted(async () => {
   try {

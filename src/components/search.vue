@@ -3,20 +3,19 @@
     type="text"
     placeholder="Search"
     v-model="searchInput"
-    @keyup.enter="onSearch"
   />
 </template> 
 
 <script setup>
-import { ref } from "vue";
+import { ref,watch } from "vue";
 
 const searchInput = ref("");
 
 const emit = defineEmits(["search-function"]);
 
-const onSearch = () => {
-  emit("search-function", searchInput.value);
-};
+watch (searchInput, (newValue) => {
+  emit("search-function", newValue);
+});
 </script>
 
 <style scoped>
