@@ -1,14 +1,19 @@
 <template>
-    <input type="text" placeholder="Search" v-model="searchInput" @keyup.enter="onSearch" />
+  <input
+    type="text"
+    placeholder="Search"
+    v-model="searchInput"
+    @keyup.enter="onSearch"
+  />
 </template> 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const searchInput = ref('');
+const searchInput = ref("");
 
 function onSearch() {
-  if (searchInput.value === '') {
-    console.log('empty');
+  if (searchInput.value === "") {
+    console.log("empty");
   } else {
     console.log(searchInput.value);
   }
