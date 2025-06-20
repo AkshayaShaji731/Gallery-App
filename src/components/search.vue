@@ -12,11 +12,11 @@ import { ref } from "vue";
 
 const searchInput = ref("");
 
-const emit=defineEmits(['search-function'])
+const emit = defineEmits(["search-function"]);
 
-const onSearch =() =>{
-  emit('search-function',searchInput.value)
-}
+const onSearch = () => {
+  emit("search-function", searchInput.value);
+};
 </script>
 
 <style scoped>

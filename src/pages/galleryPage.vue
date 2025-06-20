@@ -14,25 +14,25 @@ import cardSection from "@/components/cardSection.vue";
 const posts = ref([]);
 const postValues = ref(posts);
 
-function onSearch (searchInput) {
-  console.log("vakue")
-    postValues.value= posts.value;
+function onSearch(searchInput) {
+  console.log("vakue");
+  postValues.value = posts.value;
   if (searchInput === "") {
     console.log("empty");
   } else {
-    console.log(searchInput)
+    console.log(searchInput);
     postValues.value = [posts.value[searchInput - 1]];
     // console.log(postValues);
     searchInput = "";
   }
-};
+}
 
 onMounted(async () => {
   try {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/photos"
     );
-    posts.value = response.data.filter(item=>item.id<=40);
+    posts.value = response.data.filter((item) => item.id <= 40);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
