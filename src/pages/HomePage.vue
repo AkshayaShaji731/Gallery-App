@@ -16,6 +16,11 @@
 <script ></script>
 
 <style scoped>
+.home-container {
+  padding: 50px 32px;
+  text-align: justify;
+}
+
 .home-heading,
 .home-content {
   color: white;

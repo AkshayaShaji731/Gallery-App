@@ -13,12 +13,10 @@
 <style scoped> 
 .gallery-nav{
     background-color: #ff731f;
-    position:fixed;
-    top:0;
-    left:0px;
     width:100%;
     padding:30px;
 }
+
 .gallery-nav ul{
     list-style-type:none;
     color:#fff;
