@@ -1,6 +1,6 @@
 <template>
   <section class="gallery-container">
-    <search v-model="searchInput" class="pa-8" />
+    <search v-model="searchInput"  />
     <section class="card-container">
       <cardSection
         v-for="post in postValues"
@@ -43,7 +43,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.gallery-container{
+.gallery-container {
   padding: 0 32px;
 }
 .card-container {
@@ -61,7 +61,7 @@ onMounted(async () => {
 
 @media screen and (min-width: 1024px) {
   .card-container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 </style>

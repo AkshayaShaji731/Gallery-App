@@ -15,14 +15,22 @@
   background-color: #ff731f;
   width: 100%;
   padding: 30px;
+  /* display: block; */
+  position: relative;
 }
 
 .gallery-nav ul {
   list-style-type: none;
-  color: #fff;
   display: flex;
+  position: absolute;
+  top: 12px;
+  right: 16px;
   gap: 20px;
   font-size: 20px;
   font-weight: bold;
+}
+
+.gallery-nav ul a {
+  color: #fff;
 }
 </style>
