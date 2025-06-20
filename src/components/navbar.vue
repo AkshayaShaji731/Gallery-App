@@ -18,7 +18,7 @@
           :class="[
             isActiveLink('/gallery')
               ? 'bg-orange-accent-3 pa-4 text-white'
-              : 'hover:orange-accent-3 pa-2',
+              : 'hover:orange-accent-3 pa-4',
           ]"
           >Gallery</RouterLink
         >
@@ -29,7 +29,7 @@
           :class="[
             isActiveLink('/about')
               ? 'bg-orange-accent-3 pa-4 text-white'
-              : 'hover:orange-accent-3 pa-2',
+              : 'hover:orange-accent-3 pa-4',
           ]"
           >About</RouterLink
         >
