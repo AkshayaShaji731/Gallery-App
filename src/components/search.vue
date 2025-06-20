@@ -20,12 +20,9 @@ const onSearch =() =>{
 </script>
 
 <style scoped>
-body {
-  background-color: #111827;
-}
-
 input {
-  padding: 15px;
+  margin-top: 30px;
+  padding: 15px 12px;
   background-color: #ff731f;
   border: none;
   border-radius: 4px;

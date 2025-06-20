@@ -43,7 +43,6 @@ onMounted(async () => {
 .card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-inline: 16px;
   gap: 16px;
   margin-top: 30px;
 }
