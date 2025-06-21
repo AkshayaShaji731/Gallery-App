@@ -1,15 +1,14 @@
 <template>
-  <input type="text" placeholder="Search" v-model="searchInput" />
+  <input type="text" placeholder="Search" v-model="SEARCH_INPUT" />
 </template> 
 
 <script setup>
-import { ref, watch } from "vue";
-
-const searchInput = ref("");
+import {watch } from "vue";
+import { SEARCH_INPUT } from "@/constant/constant";
 
 const emit = defineEmits(["search-function"]);
 
-watch(searchInput, (newValue) => {
+watch(SEARCH_INPUT, (newValue) => {
   emit("search-function", newValue);
 });
 </script>

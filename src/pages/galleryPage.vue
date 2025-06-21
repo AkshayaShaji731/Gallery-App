@@ -13,10 +13,10 @@
 
 <script setup>
 import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import {onMounted, computed } from "vue";
 
-import search from "@/components/search.vue";
-import cardSection from "@/components/cardSection.vue";
+import search from "@/components/search_Input.vue";
+import cardSection from "@/components/card.vue";
 import { POST, API_BASE, SEARCH_INPUT, CARD_NUM } from "@/constant/constant";
 
 const postValues = computed(() => {
