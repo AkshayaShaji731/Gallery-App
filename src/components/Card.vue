@@ -10,6 +10,7 @@
 
 <script setup>
 import { POST_IMAGE } from "@/constant/constant";
+
 const props = defineProps({
   postData: Object,
 });

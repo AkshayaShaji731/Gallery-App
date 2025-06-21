@@ -1,15 +1,15 @@
 <template>
   <nav class="gallery-nav">
     <ul>
-      <li v-for="nav in NAV_TITLE" :key="nav.title">
+      <li v-for="routes in ROUTE_LIST" :key="routes.title">
         <RouterLink
-          :to="`${nav.path}`"
+          :to="`${routes.path}`"
           :class="[
-            getRouteStatus(`${nav.path}`)
+            getRouteStatus(`${routes.path}`)
               ? 'bg-orange-accent-3 pa-5 text-white'
               : 'hover:orange-accent-3 pa-5',
           ]"
-          >{{ nav.title }}</RouterLink
+          >{{ routes.title }}</RouterLink
         >
       </li>
     </ul>
@@ -18,7 +18,7 @@
 
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
-import { NAV_TITLE } from "@/constant/constant";
+import { ROUTE_LIST} from "@/constant/constant";
 
 const getRouteStatus = (routePath) => {
   const route = useRoute();
@@ -39,9 +39,7 @@ const getRouteStatus = (routePath) => {
 .gallery-nav ul {
   list-style-type: none;
   display: flex;
-  position: absolute;
-  top: 12px;
-  right: 16px;
+  justify-content: flex-end;
   gap: 20px;
   font-size: 20px;
   font-weight: bold;
