@@ -1,6 +1,10 @@
 <template>
-  <v-container class="my-8  d-flex justifiy-center align-center flex-column " v-for="post in POSTS" :key="post.id">
-    <v-img :src="POST_IMAGE" alt="cardDetail image " class="w-25 cover"></v-img>
+  <v-container
+    class="my-8 d-flex justifiy-center align-center flex-column"
+    v-for="post in POSTS"
+    :key="post.id"
+  >
+    <v-img :src="POST_IMAGE" alt="cardDetail image " class="w-50 cover"></v-img>
     <p class="text-center text-white text-h5 py-4">{{ post.title }}</p>
     <p class="text-center text-white text-h5 py-4">{{ post.id }}</p>
   </v-container>
