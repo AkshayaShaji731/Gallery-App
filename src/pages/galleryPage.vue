@@ -1,6 +1,6 @@
 <template>
-  <section class="pl-8 pr-8">
-    <search v-model="searchInput" />
+  <section class="px-8">
+    <search v-model="SEARCH_INPUT" />
     <section class="card-container">
       <cardSection
         v-for="post in postValues"
@@ -14,28 +14,24 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted, computed } from "vue";
+
 import search from "@/components/search.vue";
 import cardSection from "@/components/cardSection.vue";
-
-const posts = ref([]);
-const searchInput = ref("");
+import { POST, API_BASE, SEARCH_INPUT, CARD_NUM } from "@/constant/constant";
 
 const postValues = computed(() => {
-  if (!searchInput.value) {
-    return posts.value;
+  const filter = SEARCH_INPUT.value.toLowerCase();
+  if (!SEARCH_INPUT.value) {
+    return POST.value;
   }
-  const filter = searchInput.value.toLowerCase();
-  return posts.value.filter((item) =>
-    item.title.toLowerCase().includes(filter)
-  );
+
+  return POST.value.filter((item) => item.title.toLowerCase().includes(filter));
 });
 
 onMounted(async () => {
   try {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/photos"
-    );
-    posts.value = response.data.filter((item) => item.id <= 40);
+    const response = await axios.get(API_BASE);
+    POST.value = response.data.filter((item) => item.id <= CARD_NUM);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }

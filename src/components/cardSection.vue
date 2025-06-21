@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-img :src="Image" alt="img" />
+    <v-img :src="POST_IMAGE" alt="card image" />
     <v-card-item>
       <v-card-title>{{ props.postData.title }}</v-card-title>
       <v-card-subtitle>{{ props.postData.id }}</v-card-subtitle>
@@ -9,9 +9,7 @@
 </template>
 
 <script setup>
-const Image =
-  "https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8";
-
+import { POST_IMAGE } from "@/constant/constant";
 const props = defineProps({
   postData: Object,
 });

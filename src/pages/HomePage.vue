@@ -1,5 +1,5 @@
 <template>
-  <section class="pl-8 pr-8 pt-11 pb-11">
+  <section class="px-8 py-11">
     <h2 class="pa-2 text-white text-h3">Gallery App</h2>
     <p class="pa-4 text-white text-body-1 text-justify">
       Welcome to the About Photography Blog, where I share my thoughts and

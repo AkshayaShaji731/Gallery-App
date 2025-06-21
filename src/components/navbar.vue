@@ -1,37 +1,15 @@
 <template>
   <nav class="gallery-nav">
     <ul>
-      <li>
+      <li v-for="nav in NAV_TITLE" :key="nav.title">
         <RouterLink
-          to="/"
+          :to="`${nav.path}`"
           :class="[
-            isActiveLink('/')
-              ? 'bg-orange-accent-3 pa-4 text-white'
-              : 'hover:orange-accent-3 pa-4',
+            getRouteStatus(`${nav.path}`)
+              ? 'bg-orange-accent-3 pa-5 text-white'
+              : 'hover:orange-accent-3 pa-5',
           ]"
-          >Home</RouterLink
-        >
-      </li>
-      <li>
-        <RouterLink
-          to="/gallery"
-          :class="[
-            isActiveLink('/gallery')
-              ? 'bg-orange-accent-3 pa-4 text-white'
-              : 'hover:orange-accent-3 pa-4',
-          ]"
-          >Gallery</RouterLink
-        >
-      </li>
-      <li>
-        <RouterLink
-          to="/about"
-          :class="[
-            isActiveLink('/about')
-              ? 'bg-orange-accent-3 pa-4 text-white'
-              : 'hover:orange-accent-3 pa-4',
-          ]"
-          >About</RouterLink
+          >{{ nav.title }}</RouterLink
         >
       </li>
     </ul>
@@ -40,11 +18,14 @@
 
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
+import { NAV_TITLE } from "@/constant/constant";
 
-const isActiveLink = (routePath) => {
+const getRouteStatus = (routePath) => {
   const route = useRoute();
+
   return route.path === routePath;
 };
+
 </script>
 
 <style scoped>
@@ -52,7 +33,6 @@ const isActiveLink = (routePath) => {
   background-color: #ff731f;
   width: 100%;
   padding: 30px;
-  /* display: block; */
   position: relative;
 }
 
