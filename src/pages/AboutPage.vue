@@ -1,7 +1,7 @@
 <template>
   <section class="ma-8">
-    <h2 class="text-h3 text-white">About</h2>
-    <p class="text-white text-body-1 text-justify">
+    <h2 class="text-h3 text-white pa-2">About</h2>
+    <p class="text-white text-body-1 text-justify pa-2">
       An image is a visual representation of something, while a digital image is
       a binary representation of visual data. These images can take the form of
       photographs, graphics and individual video frames. For this purpose, an
