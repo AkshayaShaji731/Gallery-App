@@ -20,12 +20,12 @@ import cardSection from "@/components/cardSection.vue";
 import { POST, API_BASE, SEARCH_INPUT, CARD_NUM } from "@/constant/constant";
 
 const postValues = computed(() => {
-  const filter = SEARCH_INPUT.value.toLowerCase();
+  const cardFilter = SEARCH_INPUT.value.toLowerCase();
   if (!SEARCH_INPUT.value) {
     return POST.value;
   }
 
-  return POST.value.filter((item) => item.title.toLowerCase().includes(filter));
+  return POST.value.filter((item) => item.title.toLowerCase().includes(cardFilter));
 });
 
 onMounted(async () => {

@@ -21,6 +21,7 @@ input {
   background-color: #ff731f;
   border: none;
   border-radius: 4px;
+  outline: none;
 }
 
 input::placeholder {
