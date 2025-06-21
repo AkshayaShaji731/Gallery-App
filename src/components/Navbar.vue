@@ -18,14 +18,12 @@
 
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
-import { ROUTE_LIST} from "@/constant/constant";
+import { ROUTE_LIST } from "@/constant/constant";
 
+const route = useRoute();
 const getRouteStatus = (routePath) => {
-  const route = useRoute();
-
   return route.path === routePath;
 };
-
 </script>
 
 <style scoped>
