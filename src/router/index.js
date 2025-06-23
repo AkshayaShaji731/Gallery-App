@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import aboutPage from '@/pages/AboutPage.vue'
+import galleryPage from "@/pages/GalleryPage.vue";
 import homepage from '@/pages/HomePage.vue'
 
 const router = createRouter({
@@ -15,7 +16,13 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: aboutPage
+        },
+        {
+            path: '/gallery',
+            name: 'gallery',
+            component: galleryPage
         }
     ]
 })
+
 export default router;

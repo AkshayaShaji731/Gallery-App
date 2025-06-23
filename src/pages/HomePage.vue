@@ -1,7 +1,7 @@
 <template>
-  <section class="home-container">
-    <h2 class="home-heading">Gallery App</h2>
-    <p class="home-content">
+  <section class="px-8 py-11">
+    <h2 class="pa-2 text-white text-h3">Gallery App</h2>
+    <p class="pa-4 text-white text-body-1 text-justify">
       Welcome to the About Photography Blog, where I share my thoughts and
       essays about photography. Whether you're a beginner or a seasoned veteran,
       there's something on this website that will pique your interest. The site
@@ -15,24 +15,4 @@
 
 <script ></script>
 
-<style scoped>
-.home-container {
-  padding: 50px 32px;
-  text-align: justify;
-}
-
-.home-heading,
-.home-content {
-  color: white;
-  padding: 5px;
-}
-
-.home-heading {
-  position: relative;
-  font-size: 30px;
-}
-
-.home-content {
-  font-size: 16px;
-}
-</style>
+<style scoped></style>
