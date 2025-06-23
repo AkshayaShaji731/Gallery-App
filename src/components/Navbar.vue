@@ -3,11 +3,12 @@
     <ul>
       <li v-for="routes in ROUTE_LIST" :key="routes.title">
         <RouterLink
-          :to="`${routes.path}`"
+          :to="routes.path"
           :class="[
-            getRouteStatus(`${routes.path}`)
-              ? 'bg-orange-accent-3 pa-5 text-white'
-              : 'hover:orange-accent-3 pa-5',
+            {
+              'bg-orange-accent-3 pa-5 text-white':getRouteStatusByRoute(routes.path),
+              'hover:orange-accent-3 pa-5':getRouteStatusByRoute(routes.path)
+            }
           ]"
           >{{ routes.title }}</RouterLink
         >
@@ -21,7 +22,7 @@ import { RouterLink, useRoute } from "vue-router";
 import { ROUTE_LIST } from "@/constant/constant";
 
 const route = useRoute();
-const getRouteStatus = (routePath) => {
+const getRouteStatusByRoute = (routePath) => {
   return route.path === routePath;
 };
 </script>
@@ -45,5 +46,6 @@ const getRouteStatus = (routePath) => {
 
 .gallery-nav ul a {
   color: #fff;
+  padding: 20px;
 }
 </style>
