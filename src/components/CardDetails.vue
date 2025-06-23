@@ -7,7 +7,7 @@
   </div>
   <v-container
     class="my-8 d-flex justifiy-center align-center flex-column"
-    v-for="post in POSTS"
+    v-for="post in posts"
     :key="post.id"
   >
     <v-img :src="POST_IMAGE" alt="cardDetail image " class="w-50 cover"></v-img>
@@ -18,14 +18,16 @@
 
 <script setup>
 import axios from "axios";
-import { onMounted } from "vue";
+import { ref,onMounted } from "vue";
 import { RouterLink } from "vue-router";
-import { POST_IMAGE, API_BASE, POSTS } from "@/contant/main";
+import { POST_IMAGE, API_BASE } from "@/contant/main";
+
+const posts=ref([])
 
 onMounted(async () => {
   try {
     const response = await axios.get(API_BASE);
-    POSTS.value = response.data.filter((item) => item.id <= 1);
+    posts.value = response.data.filter((item) => item.id <= 1);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
