@@ -6,10 +6,10 @@
 import {ref,watch } from "vue";
 
 const searchInput=ref("")
-const emit = defineEmits(["search-function"]);
+const emit = defineEmits(["search"]);
 
 watch(searchInput, (newValue) => {
-  emit("search-function", newValue);
+  emit("search", newValue);
 });
 </script>
 

@@ -6,9 +6,11 @@
           :to="routes.path"
           :class="[
             {
-              'text-white pa-5':true,
-              'bg-orange-accent-3 text-white':getRouteStatusByRoute(routes.path),
-            }
+              'text-white pa-5': true,
+              'bg-orange-accent-3 text-white': getRouteStatusByRoute(
+                routes.path
+              ),
+            },
           ]"
           >{{ routes.title }}</RouterLink
         >
