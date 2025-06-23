@@ -1,5 +1,5 @@
 <template>
-  <input type="text" placeholder="Search" v-model="searchInput" />
+  <input type="text" placeholder="Search" v-model="searchInput" class="search-input" />
 </template> 
 
 <script setup>
@@ -14,7 +14,7 @@ watch(searchInput, (newValue) => {
 </script>
 
 <style scoped>
-input {
+.search-input {
   margin-top: 30px;
   padding: 15px 12px;
   background-color: #ff731f;
@@ -23,7 +23,7 @@ input {
   outline: none;
 }
 
-input::placeholder {
+.search-input::placeholder {
   color: #fff;
   font-weight: 500;
   font-size: 16px;
