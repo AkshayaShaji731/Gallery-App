@@ -6,8 +6,8 @@
           :to="routes.path"
           :class="[
             {
-              'bg-orange-accent-3 pa-5 text-white':getRouteStatusByRoute(routes.path),
-              'hover:orange-accent-3 pa-5':getRouteStatusByRoute(routes.path)
+              'text-white pa-5':true,
+              'bg-orange-accent-3 text-white':getRouteStatusByRoute(routes.path),
             }
           ]"
           >{{ routes.title }}</RouterLink
@@ -42,10 +42,5 @@ const getRouteStatusByRoute = (routePath) => {
   gap: 20px;
   font-size: 20px;
   font-weight: bold;
-}
-
-.gallery-nav ul a {
-  color: #fff;
-  padding: 20px;
 }
 </style>
