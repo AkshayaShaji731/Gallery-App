@@ -13,6 +13,8 @@
   </section>
 </template>
 
-<script ></script>
-
+<script setup>
+import { ref } from "vue";
+import EditModal from "@/components/EditModal.vue";
+</script>
 <style scoped></style>
