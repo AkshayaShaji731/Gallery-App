@@ -17,7 +17,7 @@ import { ref, onMounted, computed } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/constant";
+import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
 const searchInput = ref("");

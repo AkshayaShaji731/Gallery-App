@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { POST_IMAGE } from "@/constant/constant";
+import { POST_IMAGE } from "@/constant/index";
 
 const props = defineProps({
   postData: Object,
