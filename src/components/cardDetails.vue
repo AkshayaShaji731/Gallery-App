@@ -1,4 +1,10 @@
 <template>
+  <div class="d-flex justify-space-between w-100 my-2 px-12 " >
+    <v-btn class="bg-orange-accent-4" >
+      <RouterLink to="/" class="text-white">back</RouterLink>
+    </v-btn>
+    <v-btn class="bg-orange-accent-4">Edit</v-btn>
+  </div>
   <v-container
     class="my-8 d-flex justifiy-center align-center flex-column"
     v-for="post in POSTS"
@@ -13,6 +19,7 @@
 <script setup>
 import axios from "axios";
 import { onMounted } from "vue";
+import { RouterLink } from "vue-router";
 import { POST_IMAGE, API_BASE, POSTS } from "@/contant/main";
 
 onMounted(async () => {
@@ -23,4 +30,6 @@ onMounted(async () => {
     console.error("Error fetching jobs", error);
   }
 });
+
+
 </script>
