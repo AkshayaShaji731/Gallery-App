@@ -1,10 +1,8 @@
 <template>
   <div class="d-flex justify-space-between w-100 my-2 px-12">
-    <v-btn class="bg-orange-accent-4">
-      <RouterLink :to="`/postItem/${posts.id}`" class="text-white"
-        >back</RouterLink
-      >
-    </v-btn>
+    <RouterLink to="/gallery" class="text-white">
+      <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
+    >
     <v-btn class="bg-orange-accent-4">Edit</v-btn>
   </div>
   <v-container
