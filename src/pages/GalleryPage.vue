@@ -29,14 +29,24 @@ const searchInput = ref("");
 
 const postValues = computed(() => {
   const cardFilter = searchInput.value.toLowerCase();
-
+  const validate = isNumericString(cardFilter);
   if (!searchInput.value) {
+    // console.log(posts.value)
     return posts.value;
+  } else {
+    if (validate == true) {
+      return posts.value.filter((item) => item.id==cardFilter);
+    } else {
+      return posts.value.filter((item) =>
+        item.title.toLowerCase().includes(cardFilter)
+      );
+    }
   }
-  return posts.value.filter((item) =>
-    item.title.toLowerCase().includes(cardFilter)
-  );
 });
+
+function isNumericString(str) {
+  return !isNaN(parseFloat(str)) && isFinite(Number(str));
+}
 
 onMounted(async () => {
   try {
