@@ -1,7 +1,8 @@
 <template>
   <div class="d-flex justify-space-between w-100 my-2 px-12">
-      <RouterLink to="/gallery" class="text-white"
-        > <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink>
+    <RouterLink to="/gallery" class="text-white">
+      <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
+    >
     <v-btn class="bg-orange-accent-4">Edit</v-btn>
   </div>
   <v-container
@@ -18,17 +19,17 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
 import { POST_IMAGE, API_URL } from "@/constant/index";
 
 const posts = ref([]);
-
-// TODO: Need to use post-ID from page route to fetch individual post details.
+const route = useRoute();
+const postItem = route.params.id;
 
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
-    posts.value = response.data.filter((item) => item.id <= 1);
+    posts.value = response.data.filter((item) => item.id == postItem);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
