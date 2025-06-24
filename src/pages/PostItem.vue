@@ -20,13 +20,13 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { RouterLink } from "vue-router";
-import { POST_IMAGE, API_BASE } from "@/contant/main";
+import { POST_IMAGE, API_URL } from "@/constant/index";
 
 const posts = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get(API_BASE);
+    const response = await axios.get(API_URL);
     posts.value = response.data.filter((item) => item.id <= 1);
   } catch (error) {
     console.error("Error fetching jobs", error);
