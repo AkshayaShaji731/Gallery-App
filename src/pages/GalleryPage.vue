@@ -23,14 +23,15 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
-const posts = ref([]);
+import { usePostStore } from "@/stores/PostStore";
+
+const store = usePostStore();
+
 const searchInput = ref("");
 const hasPosts = computed(() => !!postValues.value?.length);
 
