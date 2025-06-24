@@ -47,6 +47,10 @@ function checkIsValidNumber(input) {
   return !isNaN(parseFloat(input)) && isFinite(Number(input));
 }
 
+function isNumericString(str) {
+  return !isNaN(parseFloat(str)) && isFinite(Number(str));
+}
+
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
