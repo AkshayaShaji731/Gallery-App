@@ -26,10 +26,12 @@ import { POST_IMAGE, API_URL } from "@/constant/index";
 
 const posts = ref([]);
 
+// TODO: Need to use post-ID from page route to fetch individual post details.
+
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
-    posts.value = response.data.filter((item) => item.id);
+    posts.value = response.data.filter((item) => item.id <= 1);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
