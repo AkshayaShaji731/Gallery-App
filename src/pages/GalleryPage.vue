@@ -29,22 +29,21 @@ const searchInput = ref("");
 
 const postValues = computed(() => {
   const cardFilter = searchInput.value.toLowerCase();
-  const validate = isNumericString(cardFilter);
+  const validate = searchWithID(cardFilter);
   if (!searchInput.value) {
     return posts.value;
+  }
+  if (validate) {
+    return posts.value.filter((item) => item.id == cardFilter);
   } else {
-    if (validate) {
-      return posts.value.filter((item) => item.id == cardFilter);
-    } else {
-      return posts.value.filter((item) =>
-        item.title.toLowerCase().includes(cardFilter)
-      );
-    }
+    return posts.value.filter((item) =>
+      item.title.toLowerCase().includes(cardFilter)
+    );
   }
 });
 
-function isNumericString(str) {
-  return !isNaN(parseFloat(str)) && isFinite(Number(str));
+function searchWithID(input) {
+  return !isNaN(parseFloat(input)) && isFinite(Number(input));
 }
 
 onMounted(async () => {
