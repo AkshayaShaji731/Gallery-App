@@ -17,14 +17,15 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
-const posts = ref([]);
+import { usePostStore } from '@/stores/PostStore';
+
+const store=usePostStore()
+
 const searchInput = ref("");
 
 const postValues = computed(() => {
@@ -32,7 +33,8 @@ const postValues = computed(() => {
   const isNumber = checkIsValidNumber(filterText);
 
   if (!searchInput.value) {
-    return posts.value;
+    console.log()
+    return store.posts;
   }
   if (isNumber) {
     return posts.value.filter((item) => item.id === Number(filterText));
