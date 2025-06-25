@@ -3,11 +3,11 @@
     <div v-show="props.modalActive" class="modal">
       <transition name="modal-animation-inner">
         <div v-show="props.modalActive" class="modal-inner">
-          <i @click="close" class="far fa-times-circle close-icon"></i>
+          <i @click="handleClose" class="far fa-times-circle close-icon"></i>
           <slot></slot>
           <div class="d-flex justify-end px-8 ga-1">
-            <v-btn @click="save">Save</v-btn>
-            <v-btn @click="close">Cancel</v-btn>
+            <v-btn @click="handleSave">Save</v-btn>
+            <v-btn @click="handleClose">Cancel</v-btn>
           </div>
         </div>
       </transition>
@@ -21,10 +21,10 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close", "save"]);
-const close = () => {
+const handleClose = () => {
   emit("close");
 };
-const save = () => {
+const handleSave = () => {
   emit("save");
 };
 </script>
@@ -44,16 +44,16 @@ const save = () => {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
 }
 
-.modal-animation-inner-enter-active {
+.modal-animation-inner-leave-active {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
 }
 
-.modal-animation-inner-enter-active {
+.modal-animation-inner-enter-from {
   opacity: 0;
   transform: scale(0.8);
 }
 
-.modal-animation-inner-leave-active {
+.modal-animation-inner-leave-to {
   transform: scale(0.8);
 }
 
