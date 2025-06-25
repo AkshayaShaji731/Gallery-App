@@ -17,15 +17,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
+import { usePostStore } from "@/stores/PostStore";
 
-import { usePostStore } from '@/stores/PostStore';
-
-const store=usePostStore()
-
+const postStore = usePostStore();
 const searchInput = ref("");
 
 const postValues = computed(() => {
@@ -33,8 +31,8 @@ const postValues = computed(() => {
   const isNumber = checkIsValidNumber(filterText);
 
   if (!searchInput.value) {
-    console.log()
-    return store.posts;
+    console.log();
+    return postStore.posts;
   }
   if (isNumber) {
     return posts.value.filter((item) => item.id === Number(filterText));
@@ -59,6 +57,8 @@ onMounted(async () => {
     console.error("Error fetching jobs", error);
   }
 });
+
+postStore.postFetch();
 </script>
 
 <style scoped>
