@@ -32,7 +32,7 @@ onMounted(async () => {
     const response = await axios.get(API_URL);
     const data = response.data.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
     postsLength.value = data.length;
-    posts.value = data.filter((e) => e.id >= postsLength.value - 10);
+    posts.value = data.filter((e) => e.id >= postsLength.value -9);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
