@@ -31,7 +31,6 @@ const postValues = computed(() => {
   const isNumber = checkIsValidNumber(filterText);
 
   if (!searchInput.value) {
-    console.log();
     return postStore.posts;
   }
   if (isNumber) {
