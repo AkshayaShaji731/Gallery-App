@@ -64,6 +64,7 @@ const close = () => {
   position: absolute;
   top: 25%;
   left: 25%;
+  z-index: 1;
 }
 
 .modal-inner {
@@ -76,8 +77,8 @@ const close = () => {
 
 .close-icon {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 35px;
+  right: 0px;
   font-size: 20px;
   cursor: pointer;
 }

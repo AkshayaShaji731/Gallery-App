@@ -3,7 +3,14 @@
     <RouterLink to="/gallery" class="text-white">
       <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
     >
-    <v-btn class="bg-orange-accent-4">Edit</v-btn>
+    <EditModal @close="toggle" :modal-active="modalActive">
+      <div class="d-flex flex-column px-8" v-for="post in posts" :key="post.id">
+        <v-text-field v-model="post.id" readonly></v-text-field>
+        <v-text-field v-model="post.title"></v-text-field>
+        <v-text-field v-model="POST_IMAGE"></v-text-field>
+      </div>
+    </EditModal>
+    <v-btn class="bg-orange-accent-4" @click="toggle">Edit</v-btn>
   </div>
   <v-container
     class="my-8 d-flex justifiy-center align-center flex-column"
@@ -21,10 +28,16 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 import { POST_IMAGE, API_URL } from "@/constant/index";
+import EditModal from "@/components/EditModal.vue";
 
 const posts = ref([]);
 const route = useRoute();
 const postItem = route.params.id;
+const modalActive = ref(false);
+
+const toggle = () => {
+  modalActive.value = !modalActive.value;
+};
 
 onMounted(async () => {
   try {
