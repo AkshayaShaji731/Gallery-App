@@ -6,7 +6,7 @@
           <i @click="close" class="far fa-times-circle close-icon"></i>
           <slot></slot>
           <div class="d-flex justify-end px-8 ga-1">
-            <v-btn>Save</v-btn>
+            <v-btn @click="save">Save</v-btn>
             <v-btn @click="close">Cancel</v-btn>
           </div>
         </div>
@@ -20,9 +20,12 @@ const props = defineProps({
   modalActive: Boolean,
 });
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["close", "save"]);
 const close = () => {
   emit("close");
+};
+const save = () => {
+  emit("save");
 };
 </script>
 
