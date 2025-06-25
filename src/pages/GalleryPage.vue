@@ -6,6 +6,13 @@
         Total Posts:{{ postValues.length }}
       </h5>
     </div>
+    <h2
+      v-if="isposts"
+      class="d-flex justify-center align-center width-100 h-screen text-white post-found"
+    >
+      No Elements found
+    </h2>
+    >>
     <section class="card-container">
       <cardSection
         v-for="post in postValues"
@@ -26,6 +33,8 @@ import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
 const searchInput = ref("");
+const isposts = ref(false);
+const postval = ref([]);
 
 const postValues = computed(() => {
   const filterText = searchInput.value.toLowerCase();
@@ -35,20 +44,32 @@ const postValues = computed(() => {
     return posts.value;
   }
   if (isNumber) {
-    return posts.value.filter((item) => item.id === Number(filterText));
+    postval.value = posts.value.filter(
+      (item) => item.id === Number(filterText)
+    );
+    postsEmpty(postval);
+
+    return postval.value;
   } else {
-    return posts.value.filter((item) =>
+    postval.value = posts.value.filter((item) =>
       item.title.toLowerCase().includes(filterText)
     );
+    postsEmpty(postval);
+
+    return postval.value;
   }
 });
 
-function checkIsValidNumber(input) {
-  return !isNaN(parseFloat(input)) && isFinite(Number(input));
+function postsEmpty(postval) {
+  if (postval.value.length <= 0) {
+    isposts.value = true;
+  } else {
+    isposts.value = false;
+  }
 }
 
-function isNumericString(str) {
-  return !isNaN(parseFloat(str)) && isFinite(Number(str));
+function checkIsValidNumber(input) {
+  return !isNaN(parseFloat(input)) && isFinite(Number(input));
 }
 
 onMounted(async () => {
