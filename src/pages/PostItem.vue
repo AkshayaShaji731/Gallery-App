@@ -14,7 +14,7 @@
   </div>
   <v-container
     class="my-8 d-flex justifiy-center align-center flex-column"
-    v-for="post in posts"
+    v-for="post in postItemStore.postValue"
     :key="post.id"
   >
     <v-img :src="POST_IMAGE" alt="cardDetail image" class="w-50 cover"></v-img>
@@ -24,31 +24,14 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted } from "vue";
-import { RouterLink, useRoute } from "vue-router";
-import { POST_IMAGE, API_URL } from "@/constant/index";
-import EditModal from "@/components/EditModal.vue";
+import { onMounted } from "vue";
 
-const posts = ref([]);
-const route = useRoute();
-const postItem = route.params.id;
-const modalActive = ref(false);
+import { POST_IMAGE } from "@/constant/index";
+import { usePostStore } from "@/stores/PostStore";
 
-const onClose = () => {
-  modalActive.value = !modalActive.value;
-};
+const postItemStore = usePostStore();
 
-const onSave = () => {
-  alert("post updated");
-};
-
-onMounted(async () => {
-  try {
-    const response = await axios.get(API_URL);
-    posts.value = response.data.filter((item) => item.id == postItem);
-  } catch (error) {
-    console.error("Error fetching jobs", error);
-  }
+onMounted(() => {
+  postItemStore.postItemFetch();
 });
 </script>

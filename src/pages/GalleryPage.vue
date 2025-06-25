@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
