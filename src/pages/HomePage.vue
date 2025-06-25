@@ -10,9 +10,52 @@
       photography. You can find various photographers in the masters section, as
       well as interesting stories or facts about pictures you may not know.
     </p>
+    <section class="card-container">
+      <cardSection v-for="post in posts" :key="post.id" :post-data="post" />
+    </section>
   </section>
 </template>
 
-<script></script>
+<script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
 
-<style scoped></style>
+import cardSection from "@/components/Card.vue";
+import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
+
+const posts = ref([]);
+const postsLength = ref("");
+const postValues = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(API_URL);
+    const data = response.data.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
+    postsLength.value = data.length;
+    posts.value = data.filter((e) => e.id >= postsLength.value - 10);
+  } catch (error) {
+    console.error("Error fetching jobs", error);
+  }
+});
+</script>
+
+<style scoped>
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+</style>
