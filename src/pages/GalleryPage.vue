@@ -23,15 +23,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-
 import { usePostStore } from "@/stores/PostStore";
 
-const store = usePostStore();
-
+const postStore = usePostStore();
 const searchInput = ref("");
 const hasPosts = computed(() => !!postValues.value?.length);
 
@@ -63,6 +61,8 @@ onMounted(async () => {
     console.error("Error fetching jobs", error);
   }
 });
+
+postStore.postFetch();
 </script>
 
 <style scoped>
