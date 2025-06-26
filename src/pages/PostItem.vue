@@ -4,7 +4,11 @@
       <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
     >
     <EditModal @close="onClose" @save="onSave" :modal-active="modalActive">
-      <div class="d-flex flex-column px-8" v-for="post in posts" :key="post.id">
+      <div
+        class="d-flex flex-column px-8"
+        v-for="post in postItemStore.postValue"
+        :key="post.id"
+      >
         <v-text-field v-model="post.id" readonly></v-text-field>
         <v-text-field v-model="post.title"></v-text-field>
         <v-text-field v-model="POST_IMAGE"></v-text-field>
@@ -24,12 +28,22 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 import { POST_IMAGE } from "@/constant/index";
+import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
 
 const postItemStore = usePostStore();
+const modalActive = ref(false);
+
+const onClose = () => {
+  modalActive.value = !modalActive.value;
+};
+
+const onSave = () => {
+  alert("post updated");
+};
 
 onMounted(() => {
   postItemStore.postItemFetch();
