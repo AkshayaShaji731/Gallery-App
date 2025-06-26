@@ -17,11 +17,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
 import { usePostStore } from "@/stores/PostStore";
+import { DISPLAY_CARDS_COUNT } from "@/constant";
 
 const postStore = usePostStore();
 const searchInput = ref("");
@@ -57,7 +58,11 @@ onMounted(async () => {
   }
 });
 
-postStore.postFetch();
+onMounted(async () => {
+  const post = await postStore.postFetch();
+  const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
+  postStore.updatePost(data);
+});
 </script>
 
 <style scoped>
