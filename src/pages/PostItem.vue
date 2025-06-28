@@ -23,17 +23,17 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { RouterLink, useRoute } from "vue-router";
-import { POST_IMAGE, API_URL } from "@/constant/index";
+import { POST_IMAGE, API_URL } from "@/constant/index.js";
 import EditModal from "@/components/EditModal.vue";
 
-const posts = ref([]);
+const posts = ref<any>([]);
 const route = useRoute();
-const postItem = route.params.id;
-const modalActive = ref(false);
+const postItem = <string>route.params.id;
+const modalActive = ref<boolean>(false);
 
 const onClose = () => {
   modalActive.value = !modalActive.value;
@@ -46,7 +46,7 @@ const onSave = () => {
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
-    posts.value = response.data.filter((item) => item.id == postItem);
+    posts.value = response.data.filter((item:any) => item.id == postItem);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }

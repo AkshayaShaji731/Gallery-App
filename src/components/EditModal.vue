@@ -15,7 +15,7 @@
   </transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   modalActive: Boolean,
 });
