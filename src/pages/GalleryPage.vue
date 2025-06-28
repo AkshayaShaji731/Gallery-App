@@ -7,7 +7,7 @@
       </h5>
     </div>
     <section class="card-container">
-      <cardSection
+      <cardSection 
         v-for="post in postValues"
         :key="post.id"
         :post-data="post"
@@ -16,16 +16,16 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import { ref, onMounted, computed } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
+import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index.js";
 
-const posts = ref([]);
-const searchInput = ref("");
+const posts = ref<any>([]);
+const searchInput = ref<string>("");
 
 const postValues = computed(() => {
   const cardFilter = searchInput.value.toLowerCase();
@@ -33,7 +33,8 @@ const postValues = computed(() => {
   if (!searchInput.value) {
     return posts.value;
   }
-  return posts.value.filter((item) =>
+
+  return posts.value.filter((item:any) =>
     item.title.toLowerCase().includes(cardFilter)
   );
 });
@@ -42,7 +43,7 @@ onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
     posts.value = response.data.filter(
-      (item) => item.id <= DISPLAY_CARDS_COUNT
+      (item:any) => item.id <= DISPLAY_CARDS_COUNT
     );
   } catch (error) {
     console.error("Error fetching jobs", error);
