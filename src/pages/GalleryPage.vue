@@ -1,6 +1,11 @@
 <template>
   <section class="px-8">
-    <searchBar v-model="searchInput" />
+    <div class="d-flex justify-space-between align-center">
+      <searchBar v-model="searchInput" />
+      <h5 class="text-white text-h6 font-weight-bold">
+        Total Posts:{{ postValues.length }}
+      </h5>
+    </div>
     <section class="card-container">
       <cardSection
         v-for="post in postValues"
@@ -24,10 +29,10 @@ const searchInput = ref("");
 
 const postValues = computed(() => {
   const cardFilter = searchInput.value.toLowerCase();
+
   if (!searchInput.value) {
     return posts.value;
   }
-
   return posts.value.filter((item) =>
     item.title.toLowerCase().includes(cardFilter)
   );
