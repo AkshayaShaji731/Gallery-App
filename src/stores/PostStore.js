@@ -13,8 +13,9 @@ export const usePostStore = defineStore('postStore', () => {
     async function postFetch() {
         try {
             const response = await axios.get(API_URL);
-            const data = response.data
-            return data
+            const data = response.data;
+
+            return data;
 
         } catch (error) {
             console.error("Error fetching jobs", error);
