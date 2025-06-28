@@ -28,21 +28,22 @@ const posts = ref([]);
 const searchInput = ref("");
 
 const postValues = computed(() => {
-  const cardFilter = searchInput.value.toLowerCase();
-  const validate = searchWithID(cardFilter);
+  const filterText = searchInput.value.toLowerCase();
+  const isNumber = checkIsValidNumber(filterText);
+
   if (!searchInput.value) {
     return posts.value;
   }
-  if (validate) {
-    return posts.value.filter((item) => item.id == cardFilter);
+  if (isNumber) {
+    return posts.value.filter((item) => item.id === Number(filterText));
   } else {
     return posts.value.filter((item) =>
-      item.title.toLowerCase().includes(cardFilter)
+      item.title.toLowerCase().includes(filterText)
     );
   }
 });
 
-function searchWithID(input) {
+function checkIsValidNumber(input) {
   return !isNaN(parseFloat(input)) && isFinite(Number(input));
 }
 
