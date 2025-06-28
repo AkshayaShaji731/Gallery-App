@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between align-center">
       <searchBar v-model="searchInput" />
       <h5 class="text-white text-h6 font-weight-bold">
-        Total Posts:{{ count }}
+        Total Posts:{{ postValues.length }}
       </h5>
     </div>
     <section class="card-container">
@@ -26,19 +26,16 @@ import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
 const searchInput = ref("");
-const count = ref(0);
 
 const postValues = computed(() => {
   const cardFilter = searchInput.value.toLowerCase();
+
   if (!searchInput.value) {
-    count.value = posts.value.length;
     return posts.value;
   }
-  const searchPosts = posts.value.filter((item) =>
+  return posts.value.filter((item) =>
     item.title.toLowerCase().includes(cardFilter)
   );
-  count.value = searchPosts.length;
-  return searchPosts;
 });
 
 onMounted(async () => {
