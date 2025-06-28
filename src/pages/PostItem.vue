@@ -15,11 +15,9 @@
   <v-container class="my-8 d-flex justifiy-center align-center flex-column">
     <v-img :src="POST_IMAGE" alt="cardDetail image" class="w-50 cover"></v-img>
     <p class="text-center text-white text-h5 py-4">
-      {{ postValue[0].title }}
+      {{ postTitle }}
     </p>
-    <p class="text-center text-white text-h5 py-4">
-      {{ postValue[0].id }}
-    </p>
+    <p class="text-center text-white text-h5 py-4">{{ postId }}</p>
   </v-container>
 </template>
 
@@ -30,17 +28,17 @@ import { useRoute } from "vue-router";
 import { POST_IMAGE } from "@/constant/index";
 import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
-import { DISPLAY_CARDS_COUNT } from "@/constant";
-
 
 const postItemStore = usePostStore();
 const modalActive = ref(false);
 const route = useRoute();
 const postItem = route.params.id;
-const postValue = postItemStore.posts.filter((item) => item.id == postItem);
+const postDetails = ref();
+const postId = ref("");
+const postTitle = ref("");
 const editForm = {
   id: " ",
-  title: ""
+  title: "",
 };
 const onClose = () => {
   modalActive.value = !modalActive.value;
@@ -50,11 +48,12 @@ const onSave = () => {
   alert("post updated");
 };
 
-onMounted(async () => {
-  const post = await postItemStore.postFetch();
-  const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
-  postItemStore.updatePost(data);
-  editForm.id= postValue[0].id;
-  editForm.title= postValue[0].title;
+onMounted(() => {
+  postDetails.value = postItemStore.posts.filter((item) => item.id == postItem);
+  console.log(postDetails.value[0].id);
+  postId.value = postDetails.value[0].id;
+  postTitle.value = postDetails.value[0].title;
+  editForm.id = postDetails.value[0].id;
+  editForm.title = postDetails.value[0].title;
 });
 </script>
