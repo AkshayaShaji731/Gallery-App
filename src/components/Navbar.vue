@@ -26,12 +26,12 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { RouterLink, useRoute } from "vue-router";
 import { ROUTE_LIST } from "@/constant/index";
 
 const route = useRoute();
-const getRouteStatusByRoute = (routePath) => {
+const getRouteStatusByRoute = (routePath: Object) => {
   return route.path === routePath;
 };
 </script>

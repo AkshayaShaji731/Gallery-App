@@ -19,7 +19,7 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -28,8 +28,8 @@ import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
 
 const route = useRoute();
-const postItem = route.params.id;
-const modalActive = ref(false);
+const postItem = <string>route.params.id;
+const modalActive = ref<boolean>(false);
 
 const postItemStore = usePostStore();
 const postDetails = postItemStore.getPostByID(postItem);

@@ -1,0 +1,19 @@
+import route from "@/types/Route";
+export const API_URL: string = "https://jsonplaceholder.typicode.com/photos";
+export const DISPLAY_CARDS_COUNT: number = 40;
+export const POST_IMAGE: string =
+  "https://fastly.picsum.photos/id/488/200/200.jpg?hmac=V8mvdG1ON09kNw80-qS00BSFq5gGhqRYoYPJftrsYA8";
+export const ROUTE_LIST: route[] = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Gallery",
+    path: "/gallery",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+];
