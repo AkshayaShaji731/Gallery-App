@@ -7,13 +7,12 @@
       </h5>
     </div>
     <h2
-      v-if="isposts"
-      class="d-flex justify-center align-center width-100 h-screen text-white post-found"
+      v-if="!hasPosts"
+      class="d-flex justify-center align-center width-100 h-screen text-white"
     >
       No Elements found
     </h2>
-    >>
-    <section class="card-container">
+    <section class="card-container" v-else>
       <cardSection
         v-for="post in postValues"
         :key="post.id"
@@ -33,40 +32,21 @@ import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
 const searchInput = ref("");
-const isposts = ref(false);
-const postval = ref([]);
+const hasPosts = computed(() => !!postValues.value?.length);
 
 const postValues = computed(() => {
   const filterText = searchInput.value.toLowerCase();
   const isNumber = checkIsValidNumber(filterText);
 
-  if (!searchInput.value) {
-    return posts.value;
-  }
-  if (isNumber) {
-    postval.value = posts.value.filter(
-      (item) => item.id === Number(filterText)
-    );
-    postsEmpty(postval);
+  if (!searchInput.value) return posts.value;
 
-    return postval.value;
-  } else {
-    postval.value = posts.value.filter((item) =>
-      item.title.toLowerCase().includes(filterText)
-    );
-    postsEmpty(postval);
+  if (isNumber)
+    return posts.value.filter((item) => item.id === Number(filterText));
 
-    return postval.value;
-  }
+  return posts.value.filter((item) =>
+    item.title.toLowerCase().includes(filterText)
+  );
 });
-
-function postsEmpty(postval) {
-  if (postval.value.length <= 0) {
-    isposts.value = true;
-  } else {
-    isposts.value = false;
-  }
-}
 
 function checkIsValidNumber(input) {
   return !isNaN(parseFloat(input)) && isFinite(Number(input));
