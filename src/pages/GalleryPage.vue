@@ -6,7 +6,13 @@
         Total Posts:{{ postValues.length }}
       </h5>
     </div>
-    <section class="card-container">
+    <h2
+      v-if="!hasPosts"
+      class="d-flex justify-center align-center width-100 h-screen text-white"
+    >
+      No Elements found
+    </h2>
+    <section class="card-container" v-else>
       <cardSection
         v-for="post in postValues"
         :key="post.id"
@@ -26,21 +32,20 @@ import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
 const searchInput = ref("");
+const hasPosts = computed(() => !!postValues.value?.length);
 
 const postValues = computed(() => {
   const filterText = searchInput.value.toLowerCase();
   const isNumber = checkIsValidNumber(filterText);
 
-  if (!searchInput.value) {
-    return posts.value;
-  }
-  if (isNumber) {
+  if (!searchInput.value) return posts.value;
+
+  if (isNumber)
     return posts.value.filter((item) => item.id === Number(filterText));
-  } else {
-    return posts.value.filter((item) =>
-      item.title.toLowerCase().includes(filterText)
-    );
-  }
+
+  return posts.value.filter((item) =>
+    item.title.toLowerCase().includes(filterText)
+  );
 });
 
 function checkIsValidNumber(input) {
