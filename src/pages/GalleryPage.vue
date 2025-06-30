@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between align-center">
       <searchBar v-model="searchInput" />
       <h5 class="text-white text-h6 font-weight-bold">
-        Total Posts:{{ postValues.length }}
+        Total Posts:{{ postStore.length }}
       </h5>
     </div>
     <h2
@@ -38,12 +38,12 @@ const postValues = computed(() => {
   const filterText = searchInput.value.toLowerCase();
   const isNumber = checkIsValidNumber(filterText);
 
-  if (!searchInput.value) return posts.value;
+  if (!searchInput.value) return postStore.posts;
 
   if (isNumber)
-    return posts.value.filter((item) => item.id === Number(filterText));
+    return postStore.posts.filter((item) => item.id === Number(filterText));
 
-  return posts.value.filter((item) =>
+  return postStore.posts.filter((item) =>
     item.title.toLowerCase().includes(filterText)
   );
 });
@@ -53,20 +53,9 @@ function checkIsValidNumber(input) {
 }
 
 onMounted(async () => {
-  try {
-    const response = await axios.get(API_URL);
-    posts.value = response.data.filter(
-      (item) => item.id <= DISPLAY_CARDS_COUNT
-    );
-  } catch (error) {
-    console.error("Error fetching jobs", error);
-  }
-});
-
-onMounted(async () => {
-  const post = await postStore.postFetch();
+  const post = await postStore.fetchPosts();
   const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
-  postStore.updatePost(data);
+  postStore.updatePosts(data);
 });
 </script>
 

@@ -4,13 +4,13 @@ import { ref } from "vue";
 import { API_URL } from "@/constant";
 
 export const usePostStore = defineStore('postStore', () => {
-    const posts = ref([])
+    const posts = ref([]);
 
-    const updatePost = (data) => {
+    const updatePosts = (data) => {
         posts.value = data;
     }
 
-    async function postFetch() {
+    async function fetchPosts() {
         try {
             const response = await axios.get(API_URL);
             const data = response.data;
@@ -22,7 +22,11 @@ export const usePostStore = defineStore('postStore', () => {
         }
     }
 
-    return { posts, postFetch, updatePost }
+    function getPostByID(postId) {
+        return posts.value.find((item) => item.id == postId);
+    }
+
+    return { posts, fetchPosts, updatePosts, getPostByID }
 },
     {
         persist: true,

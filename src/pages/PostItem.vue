@@ -14,10 +14,8 @@
   </div>
   <v-container class="my-8 d-flex justifiy-center align-center flex-column">
     <v-img :src="POST_IMAGE" alt="cardDetail image" class="w-50 cover"></v-img>
-    <p class="text-center text-white text-h5 py-4">
-      {{ postTitle }}
-    </p>
-    <p class="text-center text-white text-h5 py-4">{{ postId }}</p>
+    <p class="text-center text-white text-h5 py-4">{{ postDetails.title }}</p>
+    <p class="text-center text-white text-h5 py-4">{{ postDetails.id }}</p>
   </v-container>
 </template>
 
@@ -33,13 +31,13 @@ const postItemStore = usePostStore();
 const modalActive = ref(false);
 const route = useRoute();
 const postItem = route.params.id;
-const postDetails = ref();
-const postId = ref("");
-const postTitle = ref("");
+const postDetails = postItemStore.getPostByID(postItem);
+
 const editForm = {
   id: " ",
   title: "",
 };
+
 const onClose = () => {
   modalActive.value = !modalActive.value;
 };
@@ -49,11 +47,7 @@ const onSave = () => {
 };
 
 onMounted(() => {
-  postDetails.value = postItemStore.posts.filter((item) => item.id == postItem);
-  console.log(postDetails.value[0].id);
-  postId.value = postDetails.value[0].id;
-  postTitle.value = postDetails.value[0].title;
-  editForm.id = postDetails.value[0].id;
-  editForm.title = postDetails.value[0].title;
+  editForm.id = postDetails.id;
+  editForm.title = postDetails.title;
 });
 </script>
