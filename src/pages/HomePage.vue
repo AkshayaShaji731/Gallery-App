@@ -24,15 +24,12 @@ import cardSection from "@/components/Card.vue";
 import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
 
 const posts = ref([]);
-const postsLength = ref("");
-const postValues = ref([]);
 
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
     const data = response.data.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
-    postsLength.value = data.length;
-    posts.value = data.filter((e) => e.id >= postsLength.value - 9);
+    posts.value = data.filter((post) => post.id >= posts.value.length - 9);
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
