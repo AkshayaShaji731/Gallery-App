@@ -17,14 +17,14 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
+import { usePostStore } from "@/stores/PostStore";
+import { DISPLAY_CARDS_COUNT } from "@/constant";
 
-const posts = ref([]);
+const postStore = usePostStore();
 const searchInput = ref("");
 
 const postValues = computed(() => {
@@ -32,7 +32,7 @@ const postValues = computed(() => {
   const isNumber = checkIsValidNumber(filterText);
 
   if (!searchInput.value) {
-    return posts.value;
+    return postStore.posts;
   }
   if (isNumber) {
     return posts.value.filter((item) => item.id === Number(filterText));
@@ -56,6 +56,12 @@ onMounted(async () => {
   } catch (error) {
     console.error("Error fetching jobs", error);
   }
+});
+
+onMounted(async () => {
+  const post = await postStore.postFetch();
+  const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
+  postStore.updatePost(data);
 });
 </script>
 
