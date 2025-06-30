@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "file": "Route.js",
+  "file": "Posts.js",
   "sourceRoot": "",
   "sources": [
-    "Route.ts"
+    "Posts.ts"
   ],
   "names": [],
   "mappings": ""

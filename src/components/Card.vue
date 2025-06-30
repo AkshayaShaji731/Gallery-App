@@ -14,9 +14,9 @@
 import { POST_IMAGE } from "@/constant/index";
 
 const props = defineProps({
-  postData:{
-    required:true,
-    type:Object 
+  postData: {
+    required: true,
+    type: Object,
   },
 });
 </script>

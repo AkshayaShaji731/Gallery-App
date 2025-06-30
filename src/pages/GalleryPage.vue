@@ -29,6 +29,7 @@ import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
 import { usePostStore } from "@/stores/PostStore";
 import { DISPLAY_CARDS_COUNT } from "@/constant";
+import { Post } from "@/types/Posts";
 
 const searchInput = ref<string>("");
 const postStore = usePostStore();
@@ -41,20 +42,22 @@ const postValues = computed(() => {
   if (!searchInput.value) return postStore.posts;
 
   if (isNumber)
-    return postStore.posts.filter((item) => item.id === Number(filterText));
+    return postStore.posts.filter(
+      (item: Post) => item.id === Number(filterText)
+    );
 
-  return postStore.posts.filter((item) =>
+  return postStore.posts.filter((item: Post) =>
     item.title.toLowerCase().includes(filterText)
   );
 });
 
-function checkIsValidNumber(input) {
+function checkIsValidNumber(input: string) {
   return !isNaN(parseFloat(input)) && isFinite(Number(input));
 }
 
 onMounted(async () => {
   const post = await postStore.fetchPosts();
-  const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
+  const data = post.filter((item: Post) => item.id <= DISPLAY_CARDS_COUNT);
   postStore.updatePosts(data);
 });
 </script>

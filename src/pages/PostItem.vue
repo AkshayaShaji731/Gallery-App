@@ -28,7 +28,7 @@ import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
 
 const route = useRoute();
-const postItem = <string>route.params.id;
+const postItem = route.params.id;
 const modalActive = ref<boolean>(false);
 
 const postItemStore = usePostStore();
