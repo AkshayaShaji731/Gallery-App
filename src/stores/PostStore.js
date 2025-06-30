@@ -6,11 +6,11 @@ import { API_URL } from "@/constant";
 export const usePostStore = defineStore('postStore', () => {
     const posts = ref([]);
 
-    const updatePosts = (data) => {
-        posts.value = data;
+    const updatePosts = (posts) => {
+        posts.value = posts;
     }
 
-    async function fetchPosts() {
+    const fetchPosts = async () => {
         try {
             const response = await axios.get(API_URL);
             const data = response.data;
@@ -22,7 +22,7 @@ export const usePostStore = defineStore('postStore', () => {
         }
     }
 
-    function getPostByID(postId) {
+    const getPostByID = (postId) => {
         return posts.value.find((item) => item.id == postId);
     }
 

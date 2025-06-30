@@ -5,8 +5,8 @@
     >
     <EditModal @close="onClose" @save="onSave" :modal-active="modalActive">
       <div class="d-flex flex-column px-8">
-        <v-text-field v-model="editForm.id" readonly></v-text-field>
-        <v-text-field v-model="editForm.title"></v-text-field>
+        <v-text-field v-model="postDetails.id" readonly></v-text-field>
+        <v-text-field v-model="postDetails.title"></v-text-field>
         <v-text-field v-model="POST_IMAGE"></v-text-field>
       </div>
     </EditModal>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 
 import { POST_IMAGE } from "@/constant/index";
@@ -33,21 +33,12 @@ const route = useRoute();
 const postItem = route.params.id;
 const postDetails = postItemStore.getPostByID(postItem);
 
-const editForm = {
-  id: " ",
-  title: "",
-};
-
 const onClose = () => {
   modalActive.value = !modalActive.value;
 };
 
 const onSave = () => {
   alert("post updated");
+  modalActive.value = !modalActive.value;
 };
-
-onMounted(() => {
-  editForm.id = postDetails.id;
-  editForm.title = postDetails.title;
-});
 </script>
