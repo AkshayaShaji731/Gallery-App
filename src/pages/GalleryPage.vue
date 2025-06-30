@@ -28,15 +28,24 @@ const posts = ref([]);
 const searchInput = ref("");
 
 const postValues = computed(() => {
-  const cardFilter = searchInput.value.toLowerCase();
+  const filterText = searchInput.value.toLowerCase();
+  const isNumber = checkIsValidNumber(filterText);
 
   if (!searchInput.value) {
     return posts.value;
   }
-  return posts.value.filter((item) =>
-    item.title.toLowerCase().includes(cardFilter)
-  );
+  if (isNumber) {
+    return posts.value.filter((item) => item.id === Number(filterText));
+  } else {
+    return posts.value.filter((item) =>
+      item.title.toLowerCase().includes(filterText)
+    );
+  }
 });
+
+function checkIsValidNumber(input) {
+  return !isNaN(parseFloat(input)) && isFinite(Number(input));
+}
 
 onMounted(async () => {
   try {
