@@ -30,7 +30,6 @@ import searchBar from "@/components/SearchInput.vue";
 import { usePostStore } from "@/stores/PostStore";
 import { DISPLAY_CARDS_COUNT } from "@/constant";
 
-
 const searchInput = ref<string>("");
 const postStore = usePostStore();
 const hasPosts = computed(() => !!postValues.value?.length);
