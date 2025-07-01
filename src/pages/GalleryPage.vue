@@ -27,8 +27,8 @@ import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { usePostStore } from "@/stores/PostStore";
 import { DISPLAY_CARDS_COUNT } from "@/constant";
+import { usePostStore } from "@/stores/PostStore";
 import { Post } from "@/types/Posts";
 
 const searchInput = ref<string>("");
