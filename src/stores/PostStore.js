@@ -22,7 +22,7 @@ export const usePostStore = defineStore('postStore', () => {
 
     const getPostByID = (postId) => posts.value.find((item) => item.id == postId);
 
-    return { posts, fetchPosts, updatePosts, getPostByID }
+    return { fetchPosts, getPostByID, posts, updatePosts }
 },
     {
         persist: true,

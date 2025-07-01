@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between align-center">
       <searchBar v-model="searchInput" />
       <h5 class="text-white text-h6 font-weight-bold">
-        Total Posts:{{ postStore.length }}
+        Total Posts:{{ postValues.length }}
       </h5>
     </div>
     <h2

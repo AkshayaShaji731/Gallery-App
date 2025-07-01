@@ -27,10 +27,11 @@ import { POST_IMAGE } from "@/constant/index";
 import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
 
-const postItemStore = usePostStore();
-const modalActive = ref(false);
 const route = useRoute();
 const postItem = route.params.id;
+const modalActive = ref(false);
+
+const postItemStore = usePostStore();
 const postDetails = postItemStore.getPostByID(postItem);
 
 const onClose = () => {
