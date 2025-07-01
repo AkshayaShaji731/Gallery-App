@@ -23,14 +23,14 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import cardSection from "@/components/Card.vue";
 import searchBar from "@/components/SearchInput.vue";
-import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
+import { usePostStore } from "@/stores/PostStore";
+import { DISPLAY_CARDS_COUNT } from "@/constant";
 
-const posts = ref([]);
+const postStore = usePostStore();
 const searchInput = ref("");
 const hasPosts = computed(() => !!postValues.value?.length);
 
@@ -38,12 +38,12 @@ const postValues = computed(() => {
   const filterText = searchInput.value.toLowerCase();
   const isNumber = checkIsValidNumber(filterText);
 
-  if (!searchInput.value) return posts.value;
+  if (!searchInput.value) return postStore.posts;
 
   if (isNumber)
-    return posts.value.filter((item) => item.id === Number(filterText));
+    return postStore.posts.filter((item) => item.id === Number(filterText));
 
-  return posts.value.filter((item) =>
+  return postStore.posts.filter((item) =>
     item.title.toLowerCase().includes(filterText)
   );
 });
@@ -53,14 +53,9 @@ function checkIsValidNumber(input) {
 }
 
 onMounted(async () => {
-  try {
-    const response = await axios.get(API_URL);
-    posts.value = response.data.filter(
-      (item) => item.id <= DISPLAY_CARDS_COUNT
-    );
-  } catch (error) {
-    console.error("Error fetching jobs", error);
-  }
+  const post = await postStore.fetchPosts();
+  const data = post.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
+  postStore.updatePosts(data);
 });
 </script>
 
