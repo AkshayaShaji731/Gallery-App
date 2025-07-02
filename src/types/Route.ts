@@ -1,5 +1,6 @@
-interface route {
+interface Route {
   title: string;
   path: string;
 }
-export default route;
+
+export default Route;
