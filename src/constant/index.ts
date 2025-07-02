@@ -1,4 +1,4 @@
-import Route from "@/types/Route";
+import type { Route } from "@/types/Route";
 
 export const API_URL = "https://jsonplaceholder.typicode.com/photos";
 export const DISPLAY_CARDS_COUNT = 40;
