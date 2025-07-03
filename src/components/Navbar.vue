@@ -64,7 +64,7 @@ const getRouteStatusByRoute = (routePath: Object) => {
 
 .gallery-nav ul {
   list-style-type: none;
-  display: none;
+  display: flex;
   gap: 20px;
   font-size: 20px;
   font-weight: bold;
