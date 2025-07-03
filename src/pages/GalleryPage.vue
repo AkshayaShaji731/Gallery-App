@@ -1,8 +1,8 @@
 <template>
   <section class="px-8">
-    <div class="d-flex justify-space-between align-center">
+    <div class="gallery-top-con">
       <searchBar v-model="searchInput" />
-      <h5 class="text-white text-h6 font-weight-bold">
+      <h5 class="text-white text-h6 font-weight-bold text-center">
         Total Posts:{{ postValues.length }}
       </h5>
     </div>
@@ -67,12 +67,24 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-top: 30px;
+  margin-block: 30px;
+}
+
+.gallery-top-con {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .card-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-top-con {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
