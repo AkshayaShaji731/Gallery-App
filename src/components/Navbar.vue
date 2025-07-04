@@ -91,6 +91,7 @@ const onHamburgerMenuClose = () => {
 .gallery-nav ul a {
   color: #fff;
 }
+
 .nav-mob {
   list-style-type: none;
   position: absolute;
@@ -103,6 +104,7 @@ const onHamburgerMenuClose = () => {
   padding: 10px;
   font-weight: bold;
 }
+
 .nav-lap {
   list-style-type: none;
   display: none;
@@ -110,6 +112,7 @@ const onHamburgerMenuClose = () => {
   font-size: 20px;
   font-weight: bold;
 }
+
 .nav-mob :hover {
   background-color: grey;
 }
