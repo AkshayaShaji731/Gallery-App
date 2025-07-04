@@ -7,7 +7,6 @@
       />
       <h2>GalleryApp</h2>
     </div>
-
     <!-- Burger menu -->
     <button class="nav-mob-btn" @click="onHamburgerClick">
       <i class="fa-solid fa-bars text-white"></i>
@@ -20,7 +19,6 @@
       </li>
     </ul>
     <!-- end -->
-
     <!-- menu for lap -->
     <ul class="nav-lap">
       <li v-for="routes in ROUTE_LIST" :key="routes.title">
@@ -116,6 +114,7 @@ const onHamburgerMenuClose = () => {
 .nav-mob :hover {
   background-color: grey;
 }
+
 @media screen and (min-width: 768px) {
   .nav-lap {
     display: flex;
