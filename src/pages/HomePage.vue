@@ -11,14 +11,15 @@
       well as interesting stories or facts about pictures you may not know.
     </p>
     <section class="card-container">
-      <cardSection v-for="post in posts" :key="post.id" :post-data="post" />
+      <cardSection v-for="post in posts" :key="post" :post-data="post" />
     </section>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import type { Post } from "@/types/Posts";
 
 import cardSection from "@/components/Card.vue";
 import { API_URL, DISPLAY_CARDS_COUNT } from "@/constant/index";
@@ -28,8 +29,12 @@ const posts = ref([]);
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL);
-    const data = response.data.filter((item) => item.id <= DISPLAY_CARDS_COUNT);
-    posts.value = data.filter((post) => post.id >= posts.value.length - 9);
+    const data = response.data.filter(
+      (item: Post) => item.id <= DISPLAY_CARDS_COUNT
+    );
+    posts.value = data.filter(
+      (post: Post) => post.id >= posts.value.length - 9
+    );
   } catch (error) {
     console.error("Error fetching jobs", error);
   }

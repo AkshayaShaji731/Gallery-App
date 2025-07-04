@@ -7,10 +7,10 @@
   />
 </template> 
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from "vue";
 
-const searchInput = ref("");
+const searchInput = ref<string>("");
 const emit = defineEmits(["search"]);
 
 watch(searchInput, (newValue) => {

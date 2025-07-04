@@ -10,11 +10,14 @@
   </v-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { POST_IMAGE } from "@/constant/index";
 
 const props = defineProps({
-  postData: Object,
+  postData: {
+    required: true,
+    type: Object,
+  },
 });
 </script>
 

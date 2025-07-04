@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-space-between w-100 my-2 px-12">
+  <div class="d-flex justify-space-between w-100 my-2 px-12" v-if="postDetails">
     <RouterLink to="/gallery" class="text-white">
       <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
     >
@@ -12,14 +12,17 @@
     </EditModal>
     <v-btn class="bg-orange-accent-4" @click="onClose">Edit</v-btn>
   </div>
-  <v-container class="my-8 d-flex justifiy-center align-center flex-column">
+  <v-container
+    class="my-8 d-flex justifiy-center align-center flex-column"
+    v-if="postDetails"
+  >
     <v-img :src="POST_IMAGE" alt="cardDetail image" class="w-50 cover"></v-img>
     <p class="text-center text-white text-h5 py-4">{{ postDetails.title }}</p>
     <p class="text-center text-white text-h5 py-4">{{ postDetails.id }}</p>
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -28,8 +31,8 @@ import EditModal from "@/components/EditModal.vue";
 import { usePostStore } from "@/stores/PostStore";
 
 const route = useRoute();
-const postItem = route.params.id;
-const modalActive = ref(false);
+const postItem = route.params.id as string;
+const modalActive = ref<boolean>(false);
 
 const postItemStore = usePostStore();
 const postDetails = postItemStore.getPostByID(postItem);
