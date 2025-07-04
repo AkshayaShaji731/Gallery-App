@@ -7,18 +7,20 @@
       />
       <h2>GalleryApp</h2>
     </div>
+
     <!-- Burger menu -->
     <button class="nav-mob-btn" @click="onHamburgerClick">
       <i class="fa-solid fa-bars text-white"></i>
     </button>
     <ul class="nav-mob" v-if="isMenuDropdownEnable">
       <li v-for="routes in ROUTE_LIST" :key="routes.title">
-        <RouterLink :to="routes.path" @click="onHamburgerClose">
+        <RouterLink :to="routes.path" @click="onHamburgerMenuClose">
           {{ routes.title }}</RouterLink
         >
       </li>
     </ul>
     <!-- end -->
+
     <!-- menu for lap -->
     <ul class="nav-lap">
       <li v-for="routes in ROUTE_LIST" :key="routes.title">
@@ -55,7 +57,7 @@ const onHamburgerClick = () => {
   isMenuDropdownEnable.value = !isMenuDropdownEnable.value;
 };
 
-const onHamburgerClose = () => {
+const onHamburgerMenuClose = () => {
   isMenuDropdownEnable.value = false;
 };
 </script>
