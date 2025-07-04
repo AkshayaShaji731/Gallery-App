@@ -46,7 +46,7 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-top: 30px;
+  margin-block: 30px;
 }
 
 @media screen and (min-width: 768px) {

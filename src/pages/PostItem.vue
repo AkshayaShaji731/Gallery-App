@@ -4,7 +4,7 @@
       <v-btn class="bg-orange-accent-4">Back</v-btn></RouterLink
     >
     <EditModal @close="onClose" @save="onSave" :modal-active="modalActive">
-      <div class="d-flex flex-column px-8">
+      <div class="d-flex flex-column">
         <v-text-field v-model="postDetails.id" readonly></v-text-field>
         <v-text-field v-model="postDetails.title"></v-text-field>
         <v-text-field v-model="POST_IMAGE"></v-text-field>
