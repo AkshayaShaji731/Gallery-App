@@ -11,17 +11,19 @@
       well as interesting stories or facts about pictures you may not know.
     </p>
     <section class="card-container">
-      <cardSection v-for="post in posts" :key="post" :post-data="post" />
+      <cardSection v-for="post in posts" key="post" :post-data="post" />
     </section>
   </section>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { Post } from "@/types/Posts";
 import cardSection from "@/components/Card.vue";
 import { usePostStore } from "@/stores/PostStore";
 
 const postStore = usePostStore();
-const posts = postStore.latestPost();
+const posts = computed(() => postStore.latestPosts());
 </script>
 
 <style scoped>
