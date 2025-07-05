@@ -25,7 +25,10 @@ export const usePostStore = defineStore(
     const getPostByID = (postId: string) =>
       posts.value.find((item: Post) => item.id === Number(postId));
 
-    return { fetchPosts, getPostByID, posts, updatePosts };
+    const latestPosts = () =>
+      posts.value.filter((post: Post) => post.id >= posts.value.length - 9);
+
+    return { fetchPosts, getPostByID, latestPosts, posts, updatePosts };
   },
   {
     persist: true,
